@@ -22,7 +22,7 @@ body {
 
 .container div,
 .container ul {
-    width: 50%;
+    width: 60%;
     max-width: 300px;
 
 }
@@ -35,7 +35,7 @@ ul {
     font-size: 2rem;
     font-weight: bold;
     background-color: white;
-    padding: 10px;
+    padding: 20px;
 }
 
 .alternative {
