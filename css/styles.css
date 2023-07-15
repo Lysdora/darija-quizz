@@ -1,0 +1,60 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    background: #1E90FF;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+
+    padding: 0;
+    font-size: 16px;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container div,
+.container ul {
+    width: 50%;
+    max-width: 300px;
+
+}
+
+ul {
+    padding: 0;
+}
+
+#title {
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: white;
+    padding: 10px;
+}
+
+.alternative {
+    list-style-type: none;
+    margin-bottom: 4px;
+    padding: 10px;
+    background-color: #E6E6E6;
+}
+
+.alternative:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+#result {
+    font-weight: bold;
+}
+
+#score,
+#result {
+    color: white;
+}
