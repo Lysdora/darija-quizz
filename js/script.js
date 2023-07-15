@@ -887,16 +887,19 @@ let app = {
     this.showQuestion(questions[this.currPosition]);
   },
 
-  showQuestion: function (q) {
-    // show question title
-    let titleDiv = document.getElementById("title");
-    titleDiv.textContent = q.title;
+  showQuestion: function () {
+    // Générer un index aléatoire
+    let randomIndex = Math.floor(Math.random() * questions.length);
+    let randomQuestion = questions[randomIndex];
 
-    // show alternatives
+    // Afficher la question aléatoire
+    let titleDiv = document.getElementById("title");
+    titleDiv.textContent = randomQuestion.title;
+
     let alts = document.querySelectorAll(".alternative");
 
     alts.forEach(function (element, index) {
-      element.textContent = q.alternatives[index];
+      element.textContent = randomQuestion.alternatives[index];
     });
   },
 
