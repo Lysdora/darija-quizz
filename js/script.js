@@ -866,10 +866,11 @@ let questions = [
 ];
 
 let app = {
-  start: function () {
-    this.currPosition = 0;
-    this.score = 0;
+  currPosition: 0,
+  score: 0,
+  randomQuestion: null,
 
+  start: function () {
     // get alternatives
     let alts = document.querySelectorAll(".alternative");
 
@@ -884,47 +885,40 @@ let app = {
     this.updateStats();
 
     // show current question
-    this.showQuestion(questions[this.currPosition]);
+    this.showQuestion();
   },
 
   showQuestion: function () {
     // Générer un index aléatoire
     let randomIndex = Math.floor(Math.random() * questions.length);
-    let randomQuestion = questions[randomIndex];
+    this.randomQuestion = questions[randomIndex];
 
     // Afficher la question aléatoire
     let titleDiv = document.getElementById("title");
-    titleDiv.textContent = randomQuestion.title;
+    titleDiv.textContent = this.randomQuestion.title;
 
     let alts = document.querySelectorAll(".alternative");
 
-    alts.forEach(function (element, index) {
-      element.textContent = randomQuestion.alternatives[index];
+    alts.forEach((element, index) => {
+      element.textContent = this.randomQuestion.alternatives[index];
     });
   },
 
   checkAnswer: function (userSelected) {
-    let currQuestion = questions[this.currPosition];
-
-    if (currQuestion.correctAnswer == userSelected) {
-      // correct
-      //console.log("correct");
+    if (this.randomQuestion.correctAnswer === userSelected) {
+      // Correct answer
       this.score++;
       this.showResult(true);
     } else {
-      // not correct
-      //console.log("wrong");
+      // Incorrect answer
       this.showResult(false);
     }
 
-    // refresh stats
+    // Refresh stats
     this.updateStats();
 
-    // increase position
-    this.increasePosition();
-
-    // show next question
-    this.showQuestion(questions[this.currPosition]);
+    // Show next question
+    this.showQuestion();
   },
 
   increasePosition: function () {
@@ -944,20 +938,12 @@ let app = {
     let resultDiv = document.getElementById("result");
     let result = "";
 
-    // checks
-
     if (isCorrect) {
-      result = "✅ Correct Answer !";
+      result = "✅ Correct Answer!";
     } else {
-      // get the current question
-      let currQuestion = questions[this.currPosition];
-
-      // get correct answer (index)
-      let correctAnswerIndex = currQuestion.correctAnswer;
-
-      // get correct answer (text)
-      let correctAnswerText = currQuestion.alternatives[correctAnswerIndex];
-
+      let correctAnswerIndex = this.randomQuestion.correctAnswer;
+      let correctAnswerText =
+        this.randomQuestion.alternatives[correctAnswerIndex];
       result = `🤐 Wrong! Correct answer: ${correctAnswerText}`;
     }
 
