@@ -37,7 +37,7 @@ let questions = [
 
   {
     title: "Sba'7 l'KHir'",
-    alternatives: ["j'ai compris", "bonne nuit", "ok", "au revoir"],
+    alternatives: ["j'ai compris", "bonjour", "ok", "au revoir"],
     correctAnswer: 1,
   },
 
